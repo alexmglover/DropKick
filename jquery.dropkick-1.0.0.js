@@ -49,7 +49,7 @@
     ].join(''),
 
     // HTML template for dropdown options
-    optionTemplate = '<li class="{{ current }}"><a data-dk-dropdown-value="{{ value }}">{{ text }}</a></li>',
+    optionTemplate = '<li class="{{ current }}"><a data-dk-dropdown-value="{{ value }}" class="{{ class }}">{{ text }}</a></li>',
 
     // Some nice default values
     defaults = {
@@ -325,6 +325,7 @@
         oTemplate = oTemplate.replace('{{ value }}', $option.val());
         oTemplate = oTemplate.replace('{{ current }}', (_notBlank($option.val()) === view.value) ? current : '');
         oTemplate = oTemplate.replace('{{ text }}', $option.text());
+        oTemplate = oTemplate.replace('{{ class }}', (_notBlank($option.attr('class'))) ? $option.attr('class') : '');
 
         options[options.length] = oTemplate;
       }
